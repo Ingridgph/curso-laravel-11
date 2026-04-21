@@ -7,11 +7,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/users', [UserController::class , 'store'])->name('users.store');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
-Route::get('/user', [UserController::class, 'index'])->name('users.index');
-// Sem GET /users o resource deixa só POST /users (store) — GET /users dava MethodNotAllowed.
-Route::redirect('/users', '/user');
-Route::resource('users', UserController::class)->except(['index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

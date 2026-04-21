@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="{{ route('users.create') }}">Criar usuário</a>
     <h1>{{'Olá ' . $users->first()->name }}</h1>
     <table>
         <thead>
@@ -30,5 +31,7 @@
             @endforelse
         </tbody>
     </table>
+
+    {{ $users->links() }}
 </body>
 </html>
